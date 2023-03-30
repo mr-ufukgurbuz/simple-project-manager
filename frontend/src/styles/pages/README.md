@@ -1,0 +1,1 @@
+Bu dizin altinda kullaniciya sunulan URL 'lere ait page 'ler icin hazirlanmis olan .css (style) dosyalari yer alacaktir.

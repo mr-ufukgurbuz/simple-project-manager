@@ -1,0 +1,1 @@
+Bu klasorleme altinda ust seviye component'lere ait alt seviye content'ler (componentler) yer alir

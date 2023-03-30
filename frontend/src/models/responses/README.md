@@ -1,0 +1,1 @@
+Bu dizin altinda giden web cevaplarina ait model siniflari yer alacaktir.
