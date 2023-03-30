@@ -1,0 +1,1 @@
+Bu dizin altinda proje icin test amaciyla yazilmis olan test dosyalari yer alacaktir.

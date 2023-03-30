@@ -1,0 +1,1 @@
+Bu dizin altinda kullaniciya sunulan sayfalarda veritabanindan verilerin cekilmesi gibi servis taniminin kapsadigi islemler yer alacaktir.

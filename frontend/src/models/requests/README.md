@@ -1,0 +1,1 @@
+Bu dizin altinda gelen web isteklerine ait model siniflari yer alacaktir.
