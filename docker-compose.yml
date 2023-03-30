@@ -1,0 +1,111 @@
+version: '3.9'
+
+services:
+  # Accessing Docker API via Traefik without control/restriction is a potential security breach.
+  # To mitigate this we use a socket proxy that limits the operations run on Docker via client.
+  docker-socket-proxy:
+    container_name: docker_socket_proxy_container
+    image: tecnativa/docker-socket-proxy  
+    environment:
+      TZ: Europe/Istanbul
+      CONTAINERS: 1  
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:ro  
+  proxy:
+    container_name: traefik_container
+    image: traefik:v2.4
+    environment:
+      TZ: Europe/Istanbul
+    volumes:
+    # Use specific config to enable TLS
+    - /C/Simple-Project-Manager/traefik/tls.toml:/etc/traefik/tls.toml 
+    - /C/Simple-Project-Manager/traefik/certs:/opt/certs
+    depends_on:
+    - docker-socket-proxy
+    ports:
+    - 80:80
+    - 443:443
+    - 8080:8080
+    command:
+    - --log.level=ERROR
+    - --api.insecure=true 
+    - --providers.file
+    - --providers.file.filename=/etc/traefik/tls.toml 
+    - --providers.file.watch=true
+    - --providers.docker
+    - --providers.docker.exposedByDefault=false
+    - --providers.docker.endpoint=tcp://docker-socket-proxy:2375
+    - --entrypoints.web.address=:80
+    - --entrypoints.webs.address=:443
+  nexus:
+    container_name: nexus_container
+    image: sonatype/nexus3
+    ports:
+      - "8081:8081"
+    volumes:
+      - /C/Simple-Project-Manager/nexus/nexus-data:/nexus-data
+    restart: always
+  db:
+    container_name: postgresql_container
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"     
+    restart: always
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+    restart: always
+  redis:
+    container_name: redis_container
+    image: redislabs/redismod
+    #environment:
+    #  - REDIS_REPLICATION_MODE=master
+    #command: redis-server --requirepass password
+    ports:
+      - "6379:6379"
+    #volumes:
+    #  - /C/Simple-Project-Manager/redis/redis-data:/var/lib/redis
+    #  - /C/Simple-Project-Manager/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    restart: always
+  redisinsight:
+    container_name: redisinsight_container
+    image: redislabs/redisinsight
+    ports:
+      - '8001:8001'
+    volumes:
+      - /C/Simple-Project-Manager/redisinsight:/db 
+  sonarqube:
+    container_name: sonarqube_container
+    image: sonarqube:community
+    depends_on:
+      - db
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://db:5432/postgres
+      SONAR_JDBC_USERNAME: root
+      SONAR_JDBC_PASSWORD: password
+      SONAR_WEB_CONTEXT: /sonarqube
+    volumes:
+      - /C/Simple-Project-Manager/sonarqube/sonarqube-data:/opt/sonarqube/data
+      - /C/Simple-Project-Manager/sonarqube/sonarqube-extensions:/opt/sonarqube/extensions
+      - /C/Simple-Project-Manager/sonarqube/sonarqube-logs:/opt/sonarqube/logs
+    labels:
+      traefik.enable: true
+      traefik.http.routers.sonarqubes.tls: true
+      traefik.http.routers.sonarqubes.entrypoints: webs
+      traefik.http.routers.sonarqubes.rule: Host(`vdi-project-package03`) && PathPrefix(`/sonarqube`)
+      traefik.http.routers.sonarqubes.service: sonarqube-service
+      traefik.http.routers.sonarqube.tls: false
+      traefik.http.routers.sonarqube.entrypoints: web
+      traefik.http.routers.sonarqube.rule: Host(`vdi-project-package03`) && PathPrefix(`/sonarqube`)
+      traefik.http.routers.sonarqube.service: sonarqube-service
+      traefik.http.services.sonarqube-service.loadbalancer.server.port: 9000
+    restart: always
