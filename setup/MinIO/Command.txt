@@ -1,0 +1,4 @@
+PS> Invoke-WebRequest -Uri "https://dl.min.io/server/minio/release/windows-amd64/minio.exe" -OutFile "C:\minio.exe"
+PS> setx MINIO_ROOT_USER admin
+PS> setx MINIO_ROOT_PASSWORD password
+PS> C:\minio.exe server F:\Data --console-address ":9001"
