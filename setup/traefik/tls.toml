@@ -1,0 +1,3 @@
+[[tls.certificates]]
+  certFile = "/opt/certs/simple-project-manager.cert"
+  keyFile = "/opt/certs/simple-project-manager.key"  
