@@ -21,11 +21,11 @@ jobs:
       # Use mvn clean and package as the standard maven build phase
       - run:
           name: Build
-          command: mvn -B -DskipTests clean package -f backend
+          command: mvn -B -DskipTests clean package -f backend/nexus-service
       # Then run your tests!
       - run:
           name: Test
-          command: mvn test -f backend
+          command: mvn test -f backend/nexus-service
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
