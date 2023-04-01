@@ -9,7 +9,7 @@ public abstract class NexusService
     protected String nexusUrl;
 
     @Value("${nexus.repository}")
-    protected String project-packageRepository;
+    protected String repository;
 
     @Value("${nexus.assetsPath}")
     protected String assetsPath;
