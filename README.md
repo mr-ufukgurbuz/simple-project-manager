@@ -176,3 +176,4 @@ Platforms:
 
 ## License
 `simple-project-manager` is released under the [MIT License](https://opensource.org/licenses/MIT).
+> Developed By: `Ufuk GÜRBÜZ (@mr-ufukgurbuz)` and `Oktay KOÇER (@oktaykcr)`
