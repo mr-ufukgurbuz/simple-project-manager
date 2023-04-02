@@ -137,6 +137,42 @@ Platforms:
 - [sonarqube](https://www.sonarsource.com/products/sonarqube/)
 - [traefik](https://traefik.io/)
 - [nexus](https://www.sonatype.com/products/nexus-repository)
+- [minio](https://min.io/)
+
+## Screen-Shots
+
+> `All Docker Containers:`
+>
+> ![AllDockerContainers](utils/screen-shots/AllDockerContainers.png)
+
+> `NexusService (Spring Boot):`
+>
+> ![NexusService](utils/screen-shots/NexusService.png)
+
+> `WebHookService (GoLang):`
+>
+> ![WebHookService](utils/screen-shots/WebHookService.png)
+
+> `Nexus Page:`
+>
+> ![NexusPage](utils/screen-shots/_NexusPage.png)
+
+> `Redis Page:`
+>
+> ![Redis Page](utils/screen-shots/_RedisPage.png)
+
+> `Sonarqube Page:`
+>
+> ![SonarqubePage](utils/screen-shots/_SonarqubePage.png)
+
+> `MinIO Page:`
+>
+> ![MinIOPage](utils/screen-shots/_MinIOPage.png)
+
+> `Traefik Page:`
+>
+> ![TraefikPage](utils/screen-shots/_TraefikPage.png)
+> ![TraefikPage](utils/screen-shots/_TraefikPage2.png)
 
 ## License
 `simple-project-manager` is released under the [MIT License](https://opensource.org/licenses/MIT).
