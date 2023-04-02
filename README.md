@@ -143,36 +143,36 @@ Platforms:
 
 > `All Docker Containers:`
 >
-> ![AllDockerContainers](utils/screen-shots/AllDockerContainers.png)
+> ![AllDockerContainers](utils/screen-shots/AllDockerContainers.PNG)
 
 > `NexusService (Spring Boot):`
 >
-> ![NexusService](utils/screen-shots/NexusService.png)
+> ![NexusService](utils/screen-shots/NexusService.PNG)
 
 > `WebHookService (GoLang):`
 >
-> ![WebHookService](utils/screen-shots/WebHookService.png)
+> ![WebHookService](utils/screen-shots/WebHookService.PNG)
 
 > `Nexus Page:`
 >
-> ![NexusPage](utils/screen-shots/_NexusPage.png)
+> ![NexusPage](utils/screen-shots/_NexusPage.PNG)
 
 > `Redis Page:`
 >
-> ![Redis Page](utils/screen-shots/_RedisPage.png)
+> ![Redis Page](utils/screen-shots/_RedisPage.PNG)
 
 > `Sonarqube Page:`
 >
-> ![SonarqubePage](utils/screen-shots/_SonarqubePage.png)
+> ![SonarqubePage](utils/screen-shots/_SonarqubePage.PNG)
 
 > `MinIO Page:`
 >
-> ![MinIOPage](utils/screen-shots/_MinIOPage.png)
+> ![MinIOPage](utils/screen-shots/_MinIOPage.PNG)
 
 > `Traefik Page:`
 >
-> ![TraefikPage](utils/screen-shots/_TraefikPage.png)
-> ![TraefikPage](utils/screen-shots/_TraefikPage2.png)
+> ![TraefikPage](utils/screen-shots/_TraefikPage.PNG)
+> ![TraefikPage](utils/screen-shots/_TraefikPage2.PNG)
 
 ## License
 `simple-project-manager` is released under the [MIT License](https://opensource.org/licenses/MIT).
